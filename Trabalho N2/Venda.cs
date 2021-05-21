@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2
 {
-    class Vendas
+    class Venda
     {
         private Cliente cliente;
-        private Produto produto;
+        private List<Produto> produtos;
 
         public int Codigo { get; set; }
         public Cliente Cliente
@@ -22,14 +22,14 @@ namespace Trabalho_N2
                 cliente = value;
             }
         }
-        public Produto Produto
+        public List<Produto> Produtos
         {
-            get => produto;
+            get => produtos;
             set
             {
                 if (value == null)
                     throw new Exception("Produto não preenchido");
-                produto = value;
+                produtos = value;
             }
         }
         public DateTime DataDaVenda { get; set; }

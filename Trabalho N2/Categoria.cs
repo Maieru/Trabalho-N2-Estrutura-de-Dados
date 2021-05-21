@@ -8,10 +8,10 @@ namespace Trabalho_N2
 {
     class Categoria
     {
-        public int codigo;
-        public string descricao;
+        private UInt16 codigo;
+        private string descricao;
 
-        public int Codigo
+        public UInt16 Codigo
         {
             get => codigo;
             set

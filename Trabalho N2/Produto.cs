@@ -10,19 +10,19 @@ namespace Trabalho_N2
     {
         private Categoria categoria;
 
-        public int Codigo { get; set; }
-        public double Preco { get; set; }
+        public ushort Codigo { get; set; }
+        public float Preco { get; set; }
         public string Descricao { get; set; }
         public Categoria Categoria
         {
             get => categoria;
             set
             {
-                if (categoria == null)
+                if (value == null)
                     throw new Exception("Categoria não foi preenchida.");
                 categoria = value;
             }
         }
-        public DateTime DataDaCompra { get; set; }
+        public DateTime DataDoCadastro { get; set; }
     }
 }
