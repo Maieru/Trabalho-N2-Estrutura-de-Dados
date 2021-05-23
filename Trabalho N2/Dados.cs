@@ -5,18 +5,23 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trabalho_N2.Operacoes;
 
 namespace Trabalho_N2
 {
     static class Dados
     {
         // Chave = Codigo
+        // Valor = Categoria
         public static Dictionary<UInt16, Categoria> Categorias { get; private set; }
         // Chave = Codigo
+        // Valor = Produto
         public static Dictionary<int, Produto> Produtos { get; private set; }
         // Chave = CPF
+        // Valor = Cliente
         public static Dictionary<string, Cliente> Clientes { get; private set; }
         // Chave = Codigo Venda
+        // Valor = Venda.
         public static Dictionary<int, Venda> Vendas { get; private set; }
 
         public static void LerCategorias()
@@ -36,9 +41,10 @@ namespace Trabalho_N2
                 Categoria categoria = new Categoria();
                 categoria.Codigo = Convert.ToUInt16(conteudo[0]);
                 categoria.Descricao = conteudo[1];
-
                 
                 Categorias.Add(categoria.Codigo, categoria);
+
+                OpCodeA.NumeroDeCategoriasTotal++;
             }
         }
         public static void LerProdutos()
@@ -69,6 +75,8 @@ namespace Trabalho_N2
                 produto.DataDoCadastro = DateTime.ParseExact(conteudo[4], "yyyyMMddHHmmss",
                                                            CultureInfo.InvariantCulture);
 
+                OpCodeB.NumeroDeProdutosTotal++;
+
                 Produtos.Add(produto.Codigo, produto);
             }
         }
@@ -90,7 +98,9 @@ namespace Trabalho_N2
 
                 cliente.CPF = conteudo[0];
                 cliente.Nome = conteudo[1];
-                
+
+                OpCodeC.QuantidadeTotalDeClientes++;
+
                 Clientes.Add(cliente.CPF, cliente);
             }
         }
@@ -109,6 +119,16 @@ namespace Trabalho_N2
                 if (!Produtos.ContainsKey(Convert.ToInt32(conteudo[2])))
                     continue;
 
+                // Verifica se cliente é valido
+                if (!Clientes.ContainsKey(conteudo[1]))
+                    continue;
+
+                #region OpCodeE
+
+                OpCodeE.VerificaSeProdutoJaFoiVendido(Convert.ToUInt16(conteudo[2]));
+
+                #endregion
+
                 // Caso a venda já tiver sido realizada, adiciona produto na lista da venda
                 if (Vendas.ContainsKey(Convert.ToInt32(conteudo[0])))
                 {
@@ -119,11 +139,6 @@ namespace Trabalho_N2
                     continue;
                 }
 
-                // Verifica se cliente é valido
-                if (!Clientes.ContainsKey(conteudo[1]))
-                    continue;
-
-
                 Venda venda = new Venda();
 
                 venda.Codigo = Convert.ToInt32(conteudo[0]);
@@ -133,6 +148,23 @@ namespace Trabalho_N2
                 venda.Produtos.Add(Produtos[Convert.ToInt32(conteudo[2])]);
                 venda.DataDaVenda = DateTime.ParseExact(conteudo[3], "yyyyMMddHHmmss",
                                                            CultureInfo.InvariantCulture);
+
+                #region OpCodeD
+
+                OpCodeD.QuantidadeVendasIndividuais++;
+
+                #endregion
+
+                #region OpCodeG
+
+                string nomeDoCliente = Clientes[conteudo[1]].CPF;
+
+                if (OpCodeG.DicionarioDeCompraEVendas.ContainsKey(nomeDoCliente))
+                    OpCodeG.DicionarioDeCompraEVendas[nomeDoCliente]++;
+                else
+                    OpCodeG.DicionarioDeCompraEVendas.Add(nomeDoCliente, 1);
+
+                #endregion
 
                 Vendas.Add(venda.Codigo, venda);
             }
