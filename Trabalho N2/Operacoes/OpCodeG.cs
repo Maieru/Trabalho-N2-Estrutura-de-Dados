@@ -22,13 +22,15 @@ namespace Trabalho_N2.Operacoes
             {
                 string nome = Dados.Clientes[CPF].Nome;
                 int compras = DicionarioDeCompraEVendas[CPF];
-                stringBuilder.Append(CPF + "|" + nome + "|" + compras +
+                stringBuilder.Append("G - " + CPF + "|" + nome + "|" + compras +
                                      Environment.NewLine);
             }
+
+            DicionarioDeCompraEVendas = null;
 
             return stringBuilder.ToString();
         }
 
-        public static string Executar() => "G - " + ConsegueNomeDosCliente();
+        public static string Executar() => ConsegueNomeDosCliente();
     }
 }

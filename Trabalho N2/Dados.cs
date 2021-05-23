@@ -129,6 +129,29 @@ namespace Trabalho_N2
 
                 #endregion
 
+                #region OpCodeH
+
+                Produto produto = Produtos[Convert.ToInt32(conteudo[2])];
+
+                if (OpCodeH.DicionarioDeVendasDeProduto.ContainsKey(produto))
+                    OpCodeH.DicionarioDeVendasDeProduto[produto]++;
+                else
+                    OpCodeH.DicionarioDeVendasDeProduto.Add(produto, 1);
+
+                #endregion
+
+                #region OpCodeI
+
+                Produto produtoAtual = Produtos[Convert.ToInt32(conteudo[2])];
+                Categoria categoria = produtoAtual.Categoria;
+
+                if (OpCodeI.DicionarioDeVendasDeCategoria.ContainsKey(categoria))
+                    OpCodeI.DicionarioDeVendasDeCategoria[categoria]++;
+                else
+                    OpCodeI.DicionarioDeVendasDeCategoria.Add(categoria, 1);
+
+                #endregion
+
                 // Caso a venda já tiver sido realizada, adiciona produto na lista da venda
                 if (Vendas.ContainsKey(Convert.ToInt32(conteudo[0])))
                 {

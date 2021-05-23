@@ -23,7 +23,9 @@ namespace Trabalho_N2
             Console.WriteLine(OpCodeD.Executar());
             Console.WriteLine(OpCodeE.Executar());
             Console.WriteLine(OpCodeF.Executar());
-            Console.WriteLine(OpCodeG.Executar());
+            OpCodeG.Executar();
+            Console.WriteLine(OpCodeH.Executar());
+            Console.WriteLine(OpCodeI.Executar());
 
             Console.ReadKey();
         }
