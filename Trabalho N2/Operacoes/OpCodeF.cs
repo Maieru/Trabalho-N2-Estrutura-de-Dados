@@ -21,7 +21,6 @@ namespace Trabalho_N2.Operacoes
 
             return aux;
         }
-
         public static string Executar() => "F - " + CalculaONumeroDeNomesDeClientesRepetidos();
     }
 }

@@ -99,7 +99,9 @@ namespace Trabalho_N2
                 cliente.CPF = conteudo[0];
                 cliente.Nome = conteudo[1];
 
+                #region OpCodeC
                 OpCodeC.QuantidadeTotalDeClientes++;
+                #endregion
 
                 Clientes.Add(cliente.CPF, cliente);
             }
@@ -123,6 +125,8 @@ namespace Trabalho_N2
                 if (!Clientes.ContainsKey(conteudo[1]))
                     continue;
 
+                Produto produtoAtual = Produtos[Convert.ToInt32(conteudo[2])];
+
                 #region OpCodeE
 
                 OpCodeE.VerificaSeProdutoJaFoiVendido(Convert.ToUInt16(conteudo[2]));
@@ -131,34 +135,62 @@ namespace Trabalho_N2
 
                 #region OpCodeH
 
-                Produto produto = Produtos[Convert.ToInt32(conteudo[2])];
-
-                if (OpCodeH.DicionarioDeVendasDeProduto.ContainsKey(produto))
-                    OpCodeH.DicionarioDeVendasDeProduto[produto]++;
+                if (OpCodeH.VendasDeCadaProduto.ContainsKey(produtoAtual))
+                    OpCodeH.VendasDeCadaProduto[produtoAtual]++;
                 else
-                    OpCodeH.DicionarioDeVendasDeProduto.Add(produto, 1);
+                    OpCodeH.VendasDeCadaProduto.Add(produtoAtual, 1);
 
                 #endregion
 
                 #region OpCodeI
 
-                Produto produtoAtual = Produtos[Convert.ToInt32(conteudo[2])];
                 Categoria categoria = produtoAtual.Categoria;
 
-                if (OpCodeI.DicionarioDeVendasDeCategoria.ContainsKey(categoria))
-                    OpCodeI.DicionarioDeVendasDeCategoria[categoria]++;
+                if (OpCodeI.VendasPorCategoria.ContainsKey(categoria))
+                    OpCodeI.VendasPorCategoria[categoria] += produtoAtual.Preco;
                 else
-                    OpCodeI.DicionarioDeVendasDeCategoria.Add(categoria, 1);
+                    OpCodeI.VendasPorCategoria.Add(categoria, produtoAtual.Preco);
 
                 #endregion
+
+                #region OpCodeJ
+
+                string mesEAno = conteudo[3].Substring(0, 6);
+
+                if (OpCodeJ.VendasPorMesEAno.ContainsKey(mesEAno))
+                    OpCodeJ.VendasPorMesEAno[mesEAno] += produtoAtual.Preco;
+                else
+                    OpCodeJ.VendasPorMesEAno.Add(mesEAno, produtoAtual.Preco);
+
+                #endregion
+
+                #region OpCodeL
+
+                string CPF = conteudo[1];
+
+                if (OpCodeK.ClientesEVendas.ContainsKey(CPF))
+                    OpCodeK.ClientesEVendas[CPF] += produtoAtual.Preco;
+                else
+                    OpCodeK.ClientesEVendas.Add(CPF, produtoAtual.Preco);
+
+                #endregion
+
+                #region OpCodeK
+
+                if (OpCodeL.ProdutoEQuantidadeVendida.ContainsKey(produtoAtual.Codigo))
+                    OpCodeL.ProdutoEQuantidadeVendida[produtoAtual.Codigo]++;
+                else
+                    OpCodeL.ProdutoEQuantidadeVendida.Add(produtoAtual.Codigo, 1);
+
+                #endregion
+
 
                 // Caso a venda já tiver sido realizada, adiciona produto na lista da venda
                 if (Vendas.ContainsKey(Convert.ToInt32(conteudo[0])))
                 {
                     int numeroDaVenda = Convert.ToInt32(conteudo[0]);
-                    int numeroDoProduto = Convert.ToInt32(conteudo[2]);
 
-                    Vendas[numeroDaVenda].Produtos.Add(Produtos[numeroDoProduto]);
+                    Vendas[numeroDaVenda].Produtos.Add(produtoAtual);
                     continue;
                 }
 
@@ -168,7 +200,7 @@ namespace Trabalho_N2
                 venda.Cliente = Clientes[conteudo[1]];
 
                 venda.Produtos = new List<Produto>();
-                venda.Produtos.Add(Produtos[Convert.ToInt32(conteudo[2])]);
+                venda.Produtos.Add(produtoAtual);
                 venda.DataDaVenda = DateTime.ParseExact(conteudo[3], "yyyyMMddHHmmss",
                                                            CultureInfo.InvariantCulture);
 
@@ -182,10 +214,10 @@ namespace Trabalho_N2
 
                 string nomeDoCliente = Clientes[conteudo[1]].CPF;
 
-                if (OpCodeG.DicionarioDeCompraEVendas.ContainsKey(nomeDoCliente))
-                    OpCodeG.DicionarioDeCompraEVendas[nomeDoCliente]++;
+                if (OpCodeG.ComprasPorCliente.ContainsKey(nomeDoCliente))
+                    OpCodeG.ComprasPorCliente[nomeDoCliente]++;
                 else
-                    OpCodeG.DicionarioDeCompraEVendas.Add(nomeDoCliente, 1);
+                    OpCodeG.ComprasPorCliente.Add(nomeDoCliente, 1);
 
                 #endregion
 

@@ -10,27 +10,28 @@ namespace Trabalho_N2.Operacoes
     {
         // Chave = Categoria
         // Valor = Valor Total de Vendas
-        public static Dictionary<Categoria, int> DicionarioDeVendasDeCategoria = new Dictionary<Categoria, int>();
+        public static Dictionary<Categoria, double> VendasPorCategoria { get; set; } = new Dictionary<Categoria, double>();
 
         private static string ConsegueNomeDosCliente()
         {
-            HashSet<Categoria> aux = DicionarioDeVendasDeCategoria.Keys.OrderBy(x => x.Descricao).ToHashSet<Categoria>();
+            HashSet<Categoria> aux = VendasPorCategoria.Keys.OrderBy(x => x.Descricao).ToHashSet<Categoria>();
 
             StringBuilder stringBuilder = new StringBuilder();
 
             foreach (Categoria categoria in aux)
             {
-                int totalEmVendas = DicionarioDeVendasDeCategoria[categoria];
+                double totalEmVendas = VendasPorCategoria[categoria];
 
                 stringBuilder.Append("I - " + categoria.Descricao + "|" + categoria.Codigo +
-                                     "|" + totalEmVendas + Environment.NewLine);
+                                     "| R$" + totalEmVendas + Environment.NewLine);
             }
 
-            DicionarioDeVendasDeCategoria = null;
+            VendasPorCategoria = null;
+
+            GC.Collect();
 
             return stringBuilder.ToString();
         }
-
         public static string Executar() => ConsegueNomeDosCliente();
     }
 }
