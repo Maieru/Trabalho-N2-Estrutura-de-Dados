@@ -126,6 +126,8 @@ namespace Trabalho_N2
                     continue;
 
                 Produto produtoAtual = Produtos[Convert.ToInt32(conteudo[2])];
+                string CPF = conteudo[1];
+                Categoria categoria = produtoAtual.Categoria;
 
                 #region OpCodeE
 
@@ -143,8 +145,6 @@ namespace Trabalho_N2
                 #endregion
 
                 #region OpCodeI
-
-                Categoria categoria = produtoAtual.Categoria;
 
                 if (OpCodeI.VendasPorCategoria.ContainsKey(categoria))
                     OpCodeI.VendasPorCategoria[categoria] += produtoAtual.Preco;
@@ -166,8 +166,6 @@ namespace Trabalho_N2
 
                 #region OpCodeL
 
-                string CPF = conteudo[1];
-
                 if (OpCodeK.ClientesEVendas.ContainsKey(CPF))
                     OpCodeK.ClientesEVendas[CPF] += produtoAtual.Preco;
                 else
@@ -184,6 +182,26 @@ namespace Trabalho_N2
 
                 #endregion
 
+                #region OpCodeO
+
+                if (!OpCodeO.ProdutosJaVendidos.Contains(produtoAtual.Codigo))
+                    OpCodeO.ProdutosJaVendidos.Add(produtoAtual.Codigo);
+
+                #endregion
+
+                #region OpCodeP
+
+                if (!OpCodeP.ClienteQueJaCompraram.Contains(CPF))
+                    OpCodeP.ClienteQueJaCompraram.Add(CPF);
+
+                #endregion
+
+                #region OpCodeQ
+
+                if (!OpCodeQ.CategoriasQueJaForamVendidas.Contains(categoria.Codigo))
+                    OpCodeQ.CategoriasQueJaForamVendidas.Add(categoria.Codigo);
+
+                #endregion
 
                 // Caso a venda já tiver sido realizada, adiciona produto na lista da venda
                 if (Vendas.ContainsKey(Convert.ToInt32(conteudo[0])))
@@ -200,7 +218,7 @@ namespace Trabalho_N2
                 Venda venda = new Venda();
 
                 venda.Codigo = Convert.ToInt32(conteudo[0]);
-                venda.Cliente = Clientes[conteudo[1]];
+                venda.Cliente = Clientes[CPF];
 
                 venda.Produtos = new List<Produto>();
                 venda.Produtos.Add(produtoAtual);

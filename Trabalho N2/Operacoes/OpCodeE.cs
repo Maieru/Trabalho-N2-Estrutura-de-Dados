@@ -29,7 +29,7 @@ namespace Trabalho_N2.Operacoes
         public static string Executar()
         {
             ProdutosJaVendidos = null;
-            return "E - " + QuantidadeDeProdutosDistintosVendidos;
+            return "E - " + QuantidadeDeProdutosDistintosVendidos + Environment.NewLine;
         }
 
     }

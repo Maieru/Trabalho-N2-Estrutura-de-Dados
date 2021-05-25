@@ -10,6 +10,6 @@ namespace Trabalho_N2.Operacoes
     {
         public static int NumeroDeProdutosTotal { get; set; }
 
-        public static string Executar() => "B - " + NumeroDeProdutosTotal;
+        public static string Executar() => "B - " + NumeroDeProdutosTotal + Environment.NewLine;
     }
 }

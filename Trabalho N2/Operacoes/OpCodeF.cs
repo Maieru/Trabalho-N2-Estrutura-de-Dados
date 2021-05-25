@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Trabalho_N2.Operacoes
@@ -21,6 +22,6 @@ namespace Trabalho_N2.Operacoes
 
             return aux;
         }
-        public static string Executar() => "F - " + CalculaONumeroDeNomesDeClientesRepetidos();
+        public static string Executar() => "F - " + CalculaONumeroDeNomesDeClientesRepetidos() + Environment.NewLine;
     }
 }

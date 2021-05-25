@@ -10,6 +10,6 @@ namespace Trabalho_N2.Operacoes
     {
         public static int QuantidadeVendasIndividuais { get; set; }
 
-        public static string Executar() => "D - " + QuantidadeVendasIndividuais;
+        public static string Executar() => "D - " + QuantidadeVendasIndividuais + Environment.NewLine;
     }
 }

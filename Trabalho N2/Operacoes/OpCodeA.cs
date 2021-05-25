@@ -12,6 +12,6 @@ namespace Trabalho_N2.Operacoes
         // não está repetido
         public static int NumeroDeCategoriasTotal { get; set; }
 
-        public static string Executar() => "A - " + NumeroDeCategoriasTotal;
+        public static string Executar() => "A - " + NumeroDeCategoriasTotal + Environment.NewLine;
     }
 }
