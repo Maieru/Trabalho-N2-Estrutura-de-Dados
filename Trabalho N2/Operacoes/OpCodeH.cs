@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeH
+    static class OpCodeH
     {
         // Chave = Nome do Produto
         // Valor = Qtd de Produto Vendidos

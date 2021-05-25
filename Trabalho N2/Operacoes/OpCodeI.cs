@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeI
+    static class OpCodeI
     {
         // Chave = Categoria
         // Valor = Valor Total de Vendas

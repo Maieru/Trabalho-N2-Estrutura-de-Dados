@@ -59,6 +59,8 @@
     <Compile Include="Operacoes\OpCodeK.cs" />
     <Compile Include="Operacoes\OpCodeL.cs" />
     <Compile Include="Operacoes\OpCodeM.cs" />
+    <Compile Include="Operacoes\OpCodeN.cs" />
+    <Compile Include="Operacoes\OpCodeO.cs" />
     <Compile Include="Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeD
+    static class OpCodeD
     {
         public static int QuantidadeVendasIndividuais { get; set; }
 

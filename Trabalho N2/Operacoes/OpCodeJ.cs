@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeJ
+    static class OpCodeJ
     {
         // Chave = Mes/Ano ( formato yyyyMM )
         // Valor = Valor Total de Vendas

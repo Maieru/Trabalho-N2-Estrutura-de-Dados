@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    static class OpCodeB
+    static class OpCodeO
     {
-        public static int NumeroDeProdutosTotal { get; set; }
+        static HashSet<ushort> ProdutosJaVendidos { get; set; } = new HashSet<ushort>();
 
-        public static string Executar() => "B - " + NumeroDeProdutosTotal;
+
     }
 }

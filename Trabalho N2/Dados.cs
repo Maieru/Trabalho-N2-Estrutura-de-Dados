@@ -191,6 +191,9 @@ namespace Trabalho_N2
                     int numeroDaVenda = Convert.ToInt32(conteudo[0]);
 
                     Vendas[numeroDaVenda].Produtos.Add(produtoAtual);
+
+                    OpCodeN.VerificaSeVendaEMaior(Vendas[numeroDaVenda]);
+
                     continue;
                 }
 
@@ -222,6 +225,8 @@ namespace Trabalho_N2
                 #endregion
 
                 Vendas.Add(venda.Codigo, venda);
+
+                OpCodeN.VerificaSeVendaEMaior(Vendas[venda.Codigo]);
             }
         }
     }

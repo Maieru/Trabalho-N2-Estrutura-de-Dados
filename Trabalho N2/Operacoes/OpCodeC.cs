@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeC
+    static class OpCodeC
     {
         public static int QuantidadeTotalDeClientes { get; set; }
 

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeM
+    static class OpCodeM
     {
         private static string ProcuraMesComMaiorVenda()
         {
-            
             StringBuilder stringBuilder = new StringBuilder();
 
             double maiorValorDeVendas = 0;

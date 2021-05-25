@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_N2.Operacoes
 {
-    class OpCodeK
+    static class OpCodeK
     {
         // Chave = CPF
         // Valor = Valor Total de Vendas
