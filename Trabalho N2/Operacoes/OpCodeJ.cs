@@ -19,7 +19,7 @@ namespace Trabalho_N2.Operacoes
             foreach (string mesEAno in VendasPorMesEAno.Keys)
             {
                 stringBuilder.Append("J - " + mesEAno.Substring(4,2) + "/" +
-                                     mesEAno.Substring(0,4) + "| R$ " + VendasPorMesEAno[mesEAno] + Environment.NewLine);
+                                     mesEAno.Substring(0,4) + "|R$ " + VendasPorMesEAno[mesEAno] + Environment.NewLine);
             }
 
             return stringBuilder.ToString();

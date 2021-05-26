@@ -23,7 +23,7 @@ namespace Trabalho_N2.Operacoes
                 int numeroVendido = VendasDeCadaProduto[produto];
 
                 stringBuilder.Append("H - " + produto.Descricao + "|" + produto.Codigo + "|" + numeroVendido +
-                                     "| R$" + (numeroVendido * produto.Preco) + Environment.NewLine);
+                                     "|R$" + (numeroVendido * produto.Preco) + Environment.NewLine);
             }
 
             VendasDeCadaProduto = null;

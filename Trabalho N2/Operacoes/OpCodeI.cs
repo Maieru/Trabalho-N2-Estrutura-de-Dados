@@ -23,7 +23,7 @@ namespace Trabalho_N2.Operacoes
                 double totalEmVendas = VendasPorCategoria[categoria];
 
                 stringBuilder.Append("I - " + categoria.Descricao + "|" + categoria.Codigo +
-                                     "| R$" + totalEmVendas + Environment.NewLine);
+                                     "|R$" + totalEmVendas + Environment.NewLine);
             }
 
             VendasPorCategoria = null;

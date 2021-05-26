@@ -34,7 +34,7 @@ namespace Trabalho_N2.Operacoes
             {
                 string nome = Dados.Clientes[CPF].Nome;
 
-                stringBuilder.Append("K - " + nome + "|" + CPF + "| R$ " + ClientesEVendas[CPF] + Environment.NewLine);
+                stringBuilder.Append("K - " + nome + "|" + CPF + "|R$ " + ClientesEVendas[CPF] + Environment.NewLine);
             }
 
             ClientesEVendas = null;

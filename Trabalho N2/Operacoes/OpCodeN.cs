@@ -44,7 +44,7 @@ namespace Trabalho_N2.Operacoes
             foreach (int venda in MaioresVendas)
             {
                 string cpfCliente = Dados.Vendas[venda].Cliente.CPF;
-                stringBuilder.Append("N - " + venda + "|" + cpfCliente + "|" + ValorDaMaiorVenda + Environment.NewLine);
+                stringBuilder.Append("N - " + venda + "|" + cpfCliente + "|R$" + ValorDaMaiorVenda + Environment.NewLine);
             }
 
             MaioresVendas = null;
